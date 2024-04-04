@@ -1,0 +1,15 @@
+
+.form {
+  background-color: aqua;
+  padding:30px;
+}
+
+.form-label {
+  font-weight: bold;
+  background-color: #fad7ef;
+  padding:10px;
+}
+.btn-primary {
+  color:black;
+  background-color: #fad7ef;
+}

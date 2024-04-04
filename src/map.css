@@ -1,0 +1,15 @@
+/* map.css */
+
+.map-card {
+  max-width: 600px;
+  margin: 20px auto;
+}
+
+.map-card .card-body {
+  text-align: center;
+}
+
+.map-card img {
+  max-width: 100%;
+  height: auto;
+}
