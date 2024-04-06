@@ -10,50 +10,38 @@ import Movies from './components/Movies.jsx';
 const API = import.meta.env.VITE_API_URL;
 
 function App() {
+
   const [location, setLocation] = useState({});
   const [weather, setWeather] = useState([]);
   const [movies, setMovies] = useState([]);
 
-  async function handleSearch(city) {
-    try {
-      let locationURL = `${API}/location?city=${city}`;
-      let response = await axios.get(locationURL);
-      let data = response.data;
-      
-      // Check if latitude and longitude are available
-      if (data.latitude && data.longitude) {
-        setLocation(data);
-        getWeather(data.latitude, data.longitude);
-        getMovies(data.latitude, data.longitude);
-      } else {
-        console.error('Latitude or longitude is undefined in the backend response:', data);
-      }
-    } catch (error) {
-      console.error('Error fetching location data:', error);
-    }
+  async function handleSearch(city) { 
+
+    let locationURL = `${API}/location?city=${city}`;
+    let response = await axios.get(locationURL);
+    let data = response.data;
+    setLocation(data);
+
+
+    getWeather(data);
+    getMovies(data);
+
   }
 
-  async function getMovies(latitude, longitude) {
-    try {
-      let url = `${API}/movies?latitude=${latitude}&longitude=${longitude}`;
-      let response = await axios.get(url);
-      let data = response.data;
-      setMovies(data);
-    } catch (error) {
-      console.error('Error fetching movies data:', error);
-    }
+  async function getMovies(location) {
+    let url = `${API}/movies?latitude=${location.latitude}&longitude=${location.longitude}`;
+    let response = await axios.get(url);
+    let data = response.data;
+    setMovies(data);
   }
 
-  async function getWeather(latitude, longitude) {
-    try {
-      let url = `${API}/weather?latitude=${latitude}&longitude=${longitude}`;
-      let response = await axios.get(url);
-      let data = response.data;
-      setWeather(data);
-    } catch (error) {
-      console.error('Error fetching weather data:', error);
-    }
+  async function getWeather(location) {
+    let url = `${API}/weather?latitude=${location.latitude}&longitude=${location.longitude}`;
+    let response = await axios.get(url);
+    let data = response.data;
+    setWeather(data);
   }
+
 
   return (
     <>

@@ -1,6 +1,6 @@
 import React from 'react';
 import {If,Then} from 'react-if';
-import '../map.css'; 
+import '../assets/map.css'; 
 
 const KEY = import.meta.env.VITE_LOCATION_API_KEY;
 

@@ -1,17 +1,21 @@
+import React from 'react';
+
 function Weather(props) {
   return (
-    <>
-    <section>
+    <div className="row">
       {props.weather.map((day, index) => (
-        <section key={index}>
-          <h3>{day.date}</h3>
-          <p> Forecast: {day.forecast}</p>
-          <p> Low: {day.low}</p>
-          <p>High: {day.high}</p>
-      </section>
+        <div key={index} className="col-md-4">
+          <div className="card">
+            <div className="card-body">
+              <h3 className="card-title">{day.date}</h3>
+              <p className="card-text">Forecast: {day.forecast}</p>
+              <p className="card-text">Low: {day.low}</p>
+              <p className="card-text">High: {day.high}</p>
+            </div>
+          </div>
+        </div>
       ))}
-      </section>
-      </>
+    </div>
   );
 }
 
